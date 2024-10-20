@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+    <h1>Cadastro de Usuário</h1>
+    <form method="POST" action="{{ url_for('cadastro_usuario') }}">
+        
+        <input type="text" id="username" name="username" placeholder="Nome de Usuario" required><br><br>
+        <input type="password" id="password" name="password" placeholder="Senha" required><br><br>
+        </select><br><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a href="{{ url_for('admin') }}"><button type="button">Voltar para a área administrativa</button></a>
+</body>
+</html>

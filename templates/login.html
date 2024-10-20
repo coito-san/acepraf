@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+        <input type="text" id="username" name="username" placeholder="Usuario" required><br><br>
+        <input type="password" id="password" name="password" placeholder="senha"><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <a href="{{ url_for('index') }}"><button type="button">Voltar para o início</button></a>
+</body>
+</html>

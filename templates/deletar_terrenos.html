@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deletar Terrenos</title>
+</head>
+<body>
+    <h1>Lista de Terrenos para Deletar</h1>
+    <ul>
+    {% for terreno in terrenos %}
+        <li>
+            Lote: {{ terreno.lote }}, Nome: {{ terreno.nome_completo }}
+            <form action="{{ url_for('deletar_terreno', id=terreno.id) }}" method="post" style="display:inline;">
+                <button type="submit">Excluir</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

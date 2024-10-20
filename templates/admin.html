@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+    <title>Área Administrativa</title>
+</head>
+<body>
+    <h1>Bem-vindo, {{ current_user.username }}!</h1>
+    <p>Esta é a área administrativa.</p>
+    <a href="{{ url_for('cadastro') }}"><button type="button"> Cadastrar novo terreno</button></a>
+    <a href="{{ url_for('cadastro_usuario') }}"><button type="button">Cadastrar novo usuário</button></a>
+    <a href="{{ url_for('logout') }}"><button type="button">Logout</button></a><br><br>
+    <h2>Lista de Terrenos</h2>
+    <table>
+        <tr>
+            <th>Lote</th>
+            <th>CPF</th>
+            <th>Nome Completo</th>
+        </tr>
+        {% for terreno in terrenos %}
+        <tr>
+            <td>{{ terreno.lote }}</td>
+            <td>{{ terreno.cpf }}</td>
+            <td>{{ terreno.nome_completo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="pagination">
+        {% if pagination.has_prev %}
+            <a href="{{ url_for('admin', page=pagination.prev_num) }}"><button type="button">Anterior</button></a>
+        {% else %}
+            <span>Anterior</span>
+        {% endif %}
+
+        <span>Página {{ pagination.page }} de {{ pagination.pages }}</span>
+
+        {% if pagination.has_next %}
+            <a href="{{ url_for('admin', page=pagination.next_num) }}"><button type="button">Proximo</button></a>
+        {% else %}
+            <span>Próximo</span>
+        {% endif %}
+    </div>
+
+    <h2>gerenciamento de terrenos</h2>
+    <a href="{{ url_for('listar_terrenos_para_deletar') }}"><button type="button">Gerenciar Exclusão de Terrenos</button></a>
+</body>
+</html>
