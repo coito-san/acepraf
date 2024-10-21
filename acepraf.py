@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from modelos import db, Terreno, Usuario  # Importando classes de modelos
+from modelos import db, Terreno, Usuario
+import logging
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///terrenos.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'supersecretkey'  # Troque para uma chave secreta sua
-db.init_app(app)
+app.config['SECRET_KEY'] = 'supersecretkey'
 
+db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -101,7 +102,12 @@ def deletar_terreno(id):
         flash('Terreno não encontrado.')
     return redirect(url_for('listar_terrenos_para_deletar'))
 
-if __name__ == '__main__':
+# Função para criar as tabelas
+def init_db():
     with app.app_context():
         db.create_all()
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
+    init_db()  # Cria as tabelas antes de iniciar o servidor
     app.run(debug=True)
