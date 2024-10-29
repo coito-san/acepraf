@@ -84,10 +84,14 @@ def cadastro_usuario():
         return redirect(url_for('admin'))
     return render_template('cadastro_usuario.html')
 
-@app.route('/admin/deletar_terreno')
+@app.route('/admin/deletar_terreno', methods=['GET', 'POST'])
 @login_required
 def listar_terrenos_para_deletar():
-    terrenos = Terreno.query.order_by(Terreno.lote).all()
+    busca = request.form.get('busca')
+    if busca:
+        terrenos = Terreno.query.filter(Terreno.lote.contains(busca)).order_by(Terreno.lote).all()
+    else:
+        terrenos = Terreno.query.order_by(Terreno.lote).all()
     return render_template('deletar_terrenos.html', terrenos=terrenos)
 
 @app.route('/admin/deletar_terreno/<int:id>', methods=['POST'])

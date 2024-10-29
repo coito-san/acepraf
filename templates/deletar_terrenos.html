@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
     <title>Deletar Terrenos</title>
 </head>
 <body>
-    <h1>Lista de Terrenos</h1>
-    <ul>
-    {% for terreno in terrenos %}
-        <li>
-            Lote: {{ terreno.lote }}, Nome: {{ terreno.nome_completo }}
-            <form action="{{ url_for('deletar_terreno', id=terreno.id) }}" method="post" style="display:inline;">
-                <button type="submit">Excluir</button>
-            </form>
-        </li>
-    {% endfor %}
-    </ul>
+    <h1>Deletar Terrenos</h1>
+    <form method="POST" action="{{ url_for('listar_terrenos_para_deletar') }}">
+        <input type="text" name="busca" placeholder="Buscar por Lote">
+        <button type="submit">Buscar</button>
+    </form>
+    <table>
+        <tr>
+            <th>Lote</th>
+            <th>CPF</th>
+            <th>Nome Completo</th>
+            <th>Ação</th>
+        </tr>
+        {% for terreno in terrenos %}
+        <tr>
+            <td>{{ terreno.lote }}</td>
+            <td>{{ terreno.cpf }}</td>
+            <td>{{ terreno.nome_completo }}</td>
+            <td>
+                <form action="{{ url_for('deletar_terreno', id=terreno.id) }}" method="post">
+                    <button type="submit">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
