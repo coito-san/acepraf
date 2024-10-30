@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from modelos import db, Terreno, Usuario
+from modelos import db, Terreno, Usuario, Diretoria
 import logging
 
 app = Flask(__name__)
@@ -47,7 +47,7 @@ def logout():
     logout_user()
     return redirect(url_for('terrenos'))
 
-@app.route('/admin')
+@app.route('/admin',methods=['GET','POST'])
 @login_required
 def admin():
     page = request.args.get('page', 1, type=int)
@@ -71,6 +71,28 @@ def cadastro():
         db.session.commit()
         return redirect(url_for('admin'))
     return render_template('cadastro.html')
+
+
+@app.route('/admin/atualiza_membro_diretoria', methods=['GET','POST'])
+def atualiza_membro_diretoria():
+    if request.method == 'POST':
+        cargo = request.form['cargo']
+        cpf = request.form['cpf']
+        nome_completo = request.form['nome_completo']
+        membro = Diretoria.query.filter_by(cargo=cargo).first()
+        if membro:
+            membro.cpf = cpf # atualiza o membro da diretoria caso aja mudança
+            membro.nome_completo = nome_completo # atualiza o nome do membro da diretoria
+        else:
+            novo_membro = Diretoria(cargo=cargo,cpf=cpf, nome_completo=nome_completo)
+            db.session.add(novo_membro)
+        db.session.commit()
+        return redirect(url_for('admin'))
+    return render_template('cadastro_diretoria.html')
+
+
+
+
 
 @app.route('/admin/cadastro_usuario', methods=['GET', 'POST'])
 @login_required
@@ -105,6 +127,12 @@ def deletar_terreno(id):
     else:
         flash('Terreno não encontrado.')
     return redirect(url_for('listar_terrenos_para_deletar'))
+
+@app.route('/diretoria')
+def diretoria ():
+    membro_diretoria = Diretoria.query.all()
+    return render_template('diretoria.html')
+
 
 # Função para criar as tabelas
 def init_db():

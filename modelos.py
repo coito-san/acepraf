@@ -13,3 +13,11 @@ class Usuario(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
+
+
+class Diretoria(db.Model):
+
+    id = db.Column(db.Integer,primary_key= True)
+    cpf = db.Column(db.String(11),unique=True, nullable=False)
+    cargo = db.Column(db.String(50),unique=False,nullable=False)
+    nome_completo = db.Column(db.String(100),nullable=False)
