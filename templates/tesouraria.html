@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesouraria</title>
+    <style>
+        /* Estilo do iframe */
+        .content-iframe {
+            width: 100%; /* Largura do iframe */
+            height: 500px; /* Altura do iframe */
+            border: 1px solid #ccc; /* Borda do iframe */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tesouraria ACPRAF</h1>
+    <h2>Gerenciamento de Terrenos</h2>
+    <button type="button" onclick="loadIframe(registraUrl)">Registrar Contribuição </button>
+    <button type="button" onclick="loadIframe(visualizarUrl)">Visualizar Contibuições</button>
+    <!-- Iframe onde as páginas serão carregadas -->
+    <iframe src="" class="content-iframe" id="contentIframe"></iframe>
+
+    <script>
+        var registraUrl = "{{ url_for('registrar_contribuicao') }}";
+        var visualizarUrl = "{{ url_for('visualizar_contribuicoes') }}";
+        function loadIframe(url) {
+            document.getElementById('contentIframe').src = url;
+        }
+    </script>
+</body>
+</html>

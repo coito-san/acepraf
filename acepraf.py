@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from modelos import db, Terreno, Usuario, Diretoria
+from modelos import db, Terreno, Usuario, Diretoria,Tesouraria
+from sqlalchemy.sql import func
 import logging
-
+from datetime import datetime
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///terrenos.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -73,24 +74,81 @@ def cadastro():
     return render_template('cadastro.html')
 
 
-@app.route('/admin/atualiza_membro_diretoria', methods=['GET','POST'])
+@app.route('/admin/atualiza_membro_diretoria', methods=['GET', 'POST'])
 def atualiza_membro_diretoria():
     if request.method == 'POST':
         cargo = request.form['cargo']
         cpf = request.form['cpf']
         nome_completo = request.form['nome_completo']
+        imagem = request.files['imagem'].read() if 'imagem' in request.files else None
+
         membro = Diretoria.query.filter_by(cargo=cargo).first()
         if membro:
-            membro.cpf = cpf # atualiza o membro da diretoria caso aja mudança
-            membro.nome_completo = nome_completo # atualiza o nome do membro da diretoria
+            membro.cpf = cpf  # Atualiza o CPF do membro da diretoria caso haja mudança
+            membro.nome_completo = nome_completo  # Atualiza o nome do membro da diretoria
+            if imagem:
+                membro.imagem = imagem
+            else:
+                # Exclui a imagem antiga caso não haja nova imagem
+                membro.imagem = None
         else:
-            novo_membro = Diretoria(cargo=cargo,cpf=cpf, nome_completo=nome_completo)
+            novo_membro = Diretoria(
+                cargo=cargo,
+                cpf=cpf,
+                nome_completo=nome_completo,
+                imagem=imagem
+            )
             db.session.add(novo_membro)
         db.session.commit()
-        return redirect(url_for('admin'))
+        return redirect(url_for('atualiza_membro_diretoria'))
+
     return render_template('cadastro_diretoria.html')
 
+@app.route('/admin/tesouraria')
+@login_required
+def tesouraria():
+    return render_template('tesouraria.html')
 
+@app.route('/registrar_contribuicao', methods=['GET', 'POST'])
+def registrar_contribuicao():
+    if request.method == 'POST':
+        terreno_id = request.form['terreno_id']
+        valor = float(request.form['valor'])
+        data = datetime.strptime(request.form['data'], '%Y-%m-%d')
+        tipo_contribuicao = request.form['tipo_contribuicao']
+        observacao = request.form['observacao']
+
+        nova_contribuicao = Tesouraria(
+            terreno_id=terreno_id,
+            valor=valor,
+            data=data,
+            tipo_contribuicao=tipo_contribuicao,
+            observacao=observacao
+        )
+        db.session.add(nova_contribuicao)
+        db.session.commit()
+        return redirect(url_for('registrar_contribuicao'))
+
+    terrenos = Terreno.query.all()
+    return render_template('registrar_contribuicao.html', terrenos=terrenos)
+
+@app.route('/visualizar_contribuicoes', methods=['GET'])
+def visualizar_contribuicoes():
+    tipo_contribuicao = request.args.get('tipo_contribuicao', None)
+    mes = request.args.get('mes', None)
+    ano = request.args.get('ano', None)
+    
+    query = Tesouraria.query.join(Terreno).add_columns(Terreno.nome_completo, Tesouraria.valor, Tesouraria.data, Tesouraria.tipo_contribuicao)
+    
+    if tipo_contribuicao:
+        query = query.filter(Tesouraria.tipo_contribuicao == tipo_contribuicao)
+    
+    if mes and ano:
+        query = query.filter(func.strftime('%m', Tesouraria.data) == mes, func.strftime('%Y', Tesouraria.data) == ano)
+    
+    contribuicoes = query.all()
+    
+    return render_template('visualizar_contribuicoes.html', contribuicoes=contribuicoes)
 
 
 

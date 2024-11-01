@@ -19,7 +19,7 @@
     <h1>Bem-vindo, {{ current_user.username }}!</h1>
     <a href="{{ url_for('cadastro_usuario') }}"><button type="button">Cadastrar novo usuário</button></a>
     <a href="{{ url_for('logout') }}"><button type="button">Logout</button></a><br><br>
-    
+    <a href="{{url_for('tesouraria')}}"><button type="button">Tesouraria</button></a>
     <h2>Lista de Terrenos</h2>
     <table>
         <tr>
@@ -52,6 +52,7 @@
     <h2>Gerenciamento de Terrenos</h2>
     <button type="button" onclick="loadIframe(cadastroUrl)">Cadastrar novo terreno</button>
     <button type="button" onclick="loadIframe(deletarUrl)">Deletar Terreno</button>
+    <button type="button" onclick="loadIframe(add_membro_diretoria)">Adicionar membro da Diretoria</button>
     
     <!-- Iframe onde as páginas serão carregadas -->
     <iframe src="" class="content-iframe" id="contentIframe"></iframe>
@@ -59,7 +60,7 @@
     <script>
         var cadastroUrl = "{{ url_for('cadastro') }}";
         var deletarUrl = "{{ url_for('listar_terrenos_para_deletar') }}";
-        
+        var add_membro_diretoria ="{{url_for('atualiza_membro_diretoria')}}";
         function loadIframe(url) {
             document.getElementById('contentIframe').src = url;
         }

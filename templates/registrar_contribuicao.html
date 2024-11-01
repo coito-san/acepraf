@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Contribuição</title>
+</head>
+<body>
+    <h1>Registrar Contribuição</h1>
+    <form method="POST">
+        <p>
+            <label for="terreno_id">Morador:</label><br>
+            <select name="terreno_id" id="terreno_id">
+                {% for terreno in terrenos %}
+                    <option value="{{ terreno.id }}">{{ terreno.nome_completo }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label for="valor">Valor:</label><br>
+            <input type="text" name="valor" id="valor">
+        </p>
+        <p>
+            <label for="data">Data:</label><br>
+            <input type="date" name="data" id="data">
+        </p>
+        <p>
+            <label for="tipo_contribuicao">Tipo de Contribuição:</label><br>
+            <input type="text" name="tipo_contribuicao" id="tipo_contribuicao">
+        </p>
+        <p>
+            <label for="observacao">Observação:</label><br>
+            <textarea name="observacao" id="observacao"></textarea>
+        </p>
+        <p><input type="submit" value="Registrar"></p>
+    </form>
+</body>
+</html>
