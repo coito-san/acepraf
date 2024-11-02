@@ -111,6 +111,7 @@ def tesouraria():
 
 @app.route('/registrar_contribuicao', methods=['GET', 'POST'])
 def registrar_contribuicao():
+    tipos_contribuicao_padrao = ['Água', 'Estradas', 'Manutenção']
     if request.method == 'POST':
         terreno_id = request.form['terreno_id']
         valor = float(request.form['valor'])
@@ -130,25 +131,30 @@ def registrar_contribuicao():
         return redirect(url_for('registrar_contribuicao'))
 
     terrenos = Terreno.query.all()
-    return render_template('registrar_contribuicao.html', terrenos=terrenos)
+    return render_template('registrar_contribuicao.html', terrenos=terrenos, tipos_contribuicao_padrao=tipos_contribuicao_padrao)
 
-@app.route('/visualizar_contribuicoes', methods=['GET'])
+
+
+@app.route('/visualizar_contribuicoes', methods=['GET', 'POST'])
 def visualizar_contribuicoes():
-    tipo_contribuicao = request.args.get('tipo_contribuicao', None)
-    mes = request.args.get('mes', None)
-    ano = request.args.get('ano', None)
-    
-    query = Tesouraria.query.join(Terreno).add_columns(Terreno.nome_completo, Tesouraria.valor, Tesouraria.data, Tesouraria.tipo_contribuicao)
-    
-    if tipo_contribuicao:
-        query = query.filter(Tesouraria.tipo_contribuicao == tipo_contribuicao)
-    
-    if mes and ano:
-        query = query.filter(func.strftime('%m', Tesouraria.data) == mes, func.strftime('%Y', Tesouraria.data) == ano)
-    
-    contribuicoes = query.all()
-    
-    return render_template('visualizar_contribuicoes.html', contribuicoes=contribuicoes)
+    tipos_contribuicao_padrao = ['Água', 'Estradas', 'Manutenção']
+    contribuicoes = None
+    if request.method == 'POST':
+        tipo_contribuicao = request.form['tipo_contribuicao']
+        mes = request.form['mes']
+        ano = request.form['ano']
+        
+        inicio_mes = f'{ano}-{mes}-01'
+        fim_mes = f'{ano}-{mes}-31'
+
+        contribuicoes = Tesouraria.query.filter(
+            Tesouraria.tipo_contribuicao == tipo_contribuicao,
+            Tesouraria.data.between(inicio_mes, fim_mes)
+        ).all()
+
+    return render_template('visualizar_contribuicoes.html', contribuicoes=contribuicoes, tipos_contribuicao_padrao=tipos_contribuicao_padrao)
+
+
 
 
 

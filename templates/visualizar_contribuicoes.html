@@ -10,7 +10,12 @@
     <form method="POST">
         <p>
             <label for="tipo_contribuicao">Tipo de Contribuição:</label><br>
-            <input type="text" name="tipo_contribuicao" id="tipo_contribuicao">
+            <select name="tipo_contribuicao" id="tipo_contribuicao">
+                {% for tipo in tipos_contribuicao_padrao %}
+                    <option value="{{ tipo }}">{{ tipo }}</option>
+                {% endfor %}
+                <option value="Outro">Outro</option>
+            </select>
         </p>
         <p>
             <label for="mes">Mês:</label><br>

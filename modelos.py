@@ -25,6 +25,7 @@ class Diretoria(db.Model):
 
 
 
+
 class Tesouraria(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     terreno_id = db.Column(db.Integer, db.ForeignKey('terreno.id'), nullable=False)
@@ -33,5 +34,5 @@ class Tesouraria(db.Model):
     tipo_contribuicao = db.Column(db.String(50), nullable=False)
     observacao = db.Column(db.String(200), nullable=True)
 
-
     terreno = db.relationship('Terreno', backref=db.backref('contribuicoes', lazy=True))
+
