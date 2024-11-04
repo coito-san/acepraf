@@ -1,0 +1,48 @@
+# Ambiente virtual
+venv/
+.env/
+*.pyc
+__pycache__/
+
+# Arquivos de configuração local
+instance/
+*.py[cod]
+*.sqlite3
+
+# Log files
+*.log
+
+# Arquivos de cache e temporários
+*.cache
+*.egg-info
+.eggs/
+*.pyo
+.Python
+.pytest_cache/
+.coverage
+coverage.xml
+nosetests.xml
+*.cover
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ferramentas e IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos do pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# Dependências baixadas com pip
+__pycache__/
+*.egg-info/
