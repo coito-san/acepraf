@@ -1,0 +1,111 @@
+// Variáveis de cores
+$primary-color: #2c3e50;
+$accent-color: #1abc9c;
+$text-color: #ecf0f1;
+$background-color: #f4f6f8;
+
+// Layout da página
+main {
+  padding: 20px;
+  background-color: $background-color;
+  font-family: Arial, sans-serif;
+
+  h1 {
+    text-align: center;
+    color: $primary-color;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: $text-color;
+    border: 1px solid $primary-color;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    input[type="text"], input[type="password"] {
+      display: block;
+      width: calc(100% - 20px);
+      margin: 10px auto;
+      padding: 10px;
+      border: 1px solid $primary-color;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: $primary-color;
+      background-color: $background-color;
+
+      &:focus {
+        border-color: $accent-color;
+        outline: none;
+        box-shadow: 0 0 5px $accent-color;
+      }
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      color: $text-color;
+      background-color: $accent-color;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($accent-color, 10%);
+      }
+    }
+  }
+
+  a {
+    display: block;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+
+    button[type="button"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      color: $text-color;
+      background-color: $primary-color;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: lighten($primary-color, 10%);
+      }
+    }
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .page-container {
+    padding: 10px;
+
+    form {
+      padding: 15px;
+
+      input[type="text"], input[type="password"] {
+        font-size: 0.9rem;
+      }
+
+      button[type="submit"] {
+        font-size: 0.9rem;
+      }
+    }
+
+    a button[type="button"] {
+      font-size: 0.9rem;
+    }
+  }
+}

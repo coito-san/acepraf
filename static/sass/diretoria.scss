@@ -1,0 +1,61 @@
+// Estilo geral para a diretoria
+.diretoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.diretor {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+}
+
+.foto img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.informacoes {
+  h2 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #555;
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .diretoria {
+    gap: 15px;
+  }
+
+  .diretor {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .foto img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .informacoes {
+    text-align: center;
+  }
+}

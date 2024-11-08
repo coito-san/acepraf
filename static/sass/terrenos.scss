@@ -1,0 +1,112 @@
+// Variáveis para cores e espaçamentos
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$table-header-bg: #f2f2f2;
+$table-border-color: #ddd;
+$pagination-btn-color: #007bff;
+$pagination-btn-hover: darken($pagination-btn-color, 10%);
+$text-color: #333;
+$font-family: Arial, sans-serif;
+
+// Estilos globais
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  color: $text-color;
+  background-color: #f9f9f9;
+  padding: 1rem;
+}
+
+// Título da página
+h1 {
+  font-size: 2rem;
+  color: $primary-color;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+// Estilo da tabela
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto 2rem;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid $table-border-color;
+  }
+
+  th {
+    background-color: $table-header-bg;
+    font-weight: bold;
+    color: $secondary-color;
+  }
+
+  td {
+    color: $text-color;
+  }
+
+  // Estilo para linhas alternadas para melhorar a leitura
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: lighten($table-header-bg, 10%);
+  }
+}
+
+// Estilo da paginação
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  color: $secondary-color;
+
+  span {
+    padding: 0.5rem 1rem;
+  }
+
+  // Botão de navegação
+  button {
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: $pagination-btn-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $pagination-btn-hover;
+    }
+
+    &:disabled {
+      background-color: lighten($pagination-btn-color, 20%);
+      cursor: not-allowed;
+    }
+  }
+
+  // Estilo para links de paginação
+  a {
+    text-decoration: none;
+
+    button {
+      color: white;
+      &:hover {
+        background-color: $pagination-btn-hover;
+      }
+    }
+  }
+}

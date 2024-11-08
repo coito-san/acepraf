@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %} 
-{% block link %}terrenos{% endblock %} 
+{% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />{% endblock %} 
 {% block content %}
 <h1>AREA ADMINISTRATIVA</h1>
-    <h2>Login</h2>
     <form action="{{ url_for('login') }}" method="post" target="_parent">
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>

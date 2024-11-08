@@ -1,21 +1,34 @@
-{% extends "base.html" %} {% block title %}Tesouraria{% endblock %} {% block
-link %}terrenos{% endblock %} {% block content %}
+{% extends "base.html" %}
+
+{% block title %}Tesouraria{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tesouraria.css') }}" />
+{% endblock %}
+
+{% block content %}
 <h1>Tesouraria ACPRAF</h1>
 <h2>Gerenciamento de Terrenos</h2>
+
+<!-- Botões para carregar diferentes URLs no iframe -->
 <button type="button" onclick="loadIframe(registraUrl)">
-  Registrar Contribuição
+	Registrar Contribuição
 </button>
 <button type="button" onclick="loadIframe(visualizarUrl)">
-  Visualizar Contibuições
+	Visualizar Contribuições
 </button>
-<!-- Iframe onde as páginas serão carregadas -->
-<iframe src="" class="content-iframe" id="contentIframe"></iframe>
 
+<!-- Iframe onde as páginas serão carregadas -->
+<iframe src="" class="content-iframe" id="contentIframe" title="Conteúdo Gerenciado"></iframe>
+
+<!-- Script para carregar o conteúdo no iframe -->
 <script>
-  var registraUrl = "{{ url_for('registrar_contribuicao') }}";
-  var visualizarUrl = "{{ url_for('visualizar_contribuicoes') }}";
-  function loadIframe(url) {
-    document.getElementById("contentIframe").src = url;
-  }
+	var registraUrl = "{{ url_for('registrar_contribuicao') }}";
+	var visualizarUrl = "{{ url_for('visualizar_contribuicoes') }}";
+	
+	// Função para carregar a URL dentro do iframe
+	function loadIframe(url) {
+		document.getElementById("contentIframe").src = url;
+	}
 </script>
 {% endblock %}

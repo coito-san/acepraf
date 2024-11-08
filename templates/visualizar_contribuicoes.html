@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block title %}Visualizar Contribuições{% endblock
-%} {% block link %}terrenos{% endblock %} {% block content %}
+%} {% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='css/visualizar_contribuicoes.css') }}" />{% endblock %} {% block content %}
 <h1>Visualizar Contribuições</h1>
 <form method="POST">
   <p>

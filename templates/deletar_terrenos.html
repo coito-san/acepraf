@@ -1,35 +1,32 @@
-{% comment %}  {% endcomment %}
 {% extends "base.html" %}
- {% comment %}  {% endcomment %}
-{% block title %}Deletar Terrenos{% endblock %} 
-{% comment %}  {% endcomment %}
-{% block link %}terrenos{% endblock %} 
-{% comment %}  {% endcomment %}
+{% block title %}Deletar Terrenos{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/deletar_terrenos.css') }}" />{% endblock %}
 {% block content %}
 <h1>Deletar Terrenos</h1>
-    <form method="POST" action="{{ url_for('listar_terrenos_para_deletar') }}">
-        <input type="text" name="busca" placeholder="Buscar por Lote">
-        <button type="submit">Buscar</button>
-    </form>
-    <table>
-        <tr>
-            <th>Lote</th>
-            <th>CPF</th>
-            <th>Nome Completo</th>
-            <th>Ação</th>
-        </tr>
-        {% for terreno in terrenos %}
-        <tr>
-            <td>{{ terreno.lote }}</td>
-            <td>{{ terreno.cpf }}</td>
-            <td>{{ terreno.nome_completo }}</td>
-            <td>
-                <form action="{{ url_for('deletar_terreno', id=terreno.id) }}" method="post">
-                    <button type="submit">Deletar</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+<form method="POST" action="{{ url_for('listar_terrenos_para_deletar') }}">
+	<input type="text" name="busca" placeholder="Buscar por Lote">
+	<button type="submit">Buscar</button>
+</form>
+<table>
+	<tr>
+		<th>Lote</th>
+		<th>CPF</th>
+		<th>Nome Completo</th>
+		<th>Ação</th>
+	</tr>
+	{% for terreno in terrenos %}
+	<tr>
+		<td>{{ terreno.lote }}</td>
+		<td>{{ terreno.cpf }}</td>
+		<td>{{ terreno.nome_completo }}</td>
+		<td>
+			<form action="{{ url_for('deletar_terreno', id=terreno.id) }}" method="post">
+				<button type="submit">Deletar</button>
+			</form>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
 </body>
 {% endblock %}

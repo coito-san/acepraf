@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Cadastro de Terreno{% endblock %} 
-{% block link %}terrenos{% endblock %} 
+{% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}" />{% endblock %} 
 {% block content %}
 <h1>Cadastro de Terreno</h1>
 <form method="POST" action="{{ url_for('cadastro') }}">

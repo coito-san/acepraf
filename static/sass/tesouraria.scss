@@ -1,0 +1,74 @@
+// Variáveis para cores e fontes
+$primary-color: #4CAF50; // Cor principal (verde)
+$secondary-color: #f1f1f1; // Cor de fundo (cinza claro)
+$button-color: #fff; // Cor do texto do botão
+$button-bg: $primary-color; // Cor de fundo do botão
+$button-hover-bg: darken($primary-color, 10%); // Cor de fundo ao passar o mouse
+$font-family: 'Arial', sans-serif; // Fonte utilizada	
+
+// Estilo geral da página
+body {
+  font-family: $font-family;
+  background-color: $secondary-color;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1, h2 {
+  color: $primary-color;
+  text-align: center;
+}
+
+// Estilo para os botões
+button {
+  background-color: $button-bg;
+  color: $button-color;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: $button-hover-bg;
+  }
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+// Estilo para o iframe
+.content-iframe {
+  display: block;
+  width: 100%;
+  height: 500px;
+  border: 2px solid $primary-color;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+// Centralizar o container
+h1, h2 {
+  margin-top: 30px;
+}
+
+// Ajuste para o layout em dispositivos menores
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 24px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  .content-iframe {
+    height: 400px;
+  }
+}

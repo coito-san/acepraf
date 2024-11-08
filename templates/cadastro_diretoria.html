@@ -1,26 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Atualiza Membro da Diretoria{% endblock %} 
-{% block link %}terrenos{% endblock %} 
+{% block title %}Atualiza Membro da Diretoria{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_diretoria.css') }}" />{% endblock %}
 {% block content %}
 <h1>Atualiza Membro da Diretoria</h1>
 <form method="POST" enctype="multipart/form-data">
-		<div>
-				<label for="cpf">CPF:</label><br>
-				<input type="text" name="cpf" id="cpf" size="32">
-		</div>
-		<div>
-				<label for="cargo">Cargo:</label><br>
-				<input type="text" name="cargo" id="cargo" size="32">
-		</div>
-		<div>
-				<label for="nome_completo">Nome Completo:</label><br>
-				<input type="text" name="nome_completo" id="nome_completo" size="32">
-		</div>
-		<div>
-				<label for="imagem">Foto:</label><br>
-				<input type="file" name="imagem" id="imagem">
-		</div>
-		<input type="submit" value="Cadastrar">
-		
+	<div>
+		<label for="cpf">CPF:</label><br>
+		<input type="text" name="cpf" id="cpf" size="32">
+	</div>
+	<div>
+		<label for="cargo">Cargo:</label><br>
+		<input type="text" name="cargo" id="cargo" size="32">
+	</div>
+	<div>
+		<label for="nome_completo">Nome Completo:</label><br>
+		<input type="text" name="nome_completo" id="nome_completo" size="32">
+	</div>
+	<div>
+		<label for="imagem">Foto:</label><br>
+		<input type="file" name="imagem" id="imagem">
+	</div>
+	<input type="submit" value="Cadastrar">
 </form>
 {% endblock %}
