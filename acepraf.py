@@ -154,10 +154,6 @@ def visualizar_contribuicoes():
 
     return render_template('visualizar_contribuicoes.html', contribuicoes=contribuicoes, tipos_contribuicao_padrao=tipos_contribuicao_padrao)
 
-
-
-
-
 @app.route('/admin/cadastro_usuario', methods=['GET', 'POST'])
 @login_required
 def cadastro_usuario():

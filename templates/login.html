@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
-    <title>Login</title>
-</head>
-<body>
-    <h1>AREA ADMINISTRATIVA</h1>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %} 
+{% block link %}terrenos{% endblock %} 
+{% block content %}
+<h1>AREA ADMINISTRATIVA</h1>
     <h2>Login</h2>
     <form action="{{ url_for('login') }}" method="post" target="_parent">
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Entrar</button>
     </form>
-</body>
-</html>
+		
+{% endblock %}

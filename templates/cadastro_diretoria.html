@@ -1,30 +1,26 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualiza Membro da Diretoria</title>
-</head>
-<body>
-    <h1>Atualiza Membro da Diretoria</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <p>
-            <label for="cpf">CPF:</label><br>
-            <input type="text" name="cpf" id="cpf" size="32">
-        </p>
-        <p>
-            <label for="cargo">Cargo:</label><br>
-            <input type="text" name="cargo" id="cargo" size="32">
-        </p>
-        <p>
-            <label for="nome_completo">Nome Completo:</label><br>
-            <input type="text" name="nome_completo" id="nome_completo" size="32">
-        </p>
-        <p>
-            <label for="imagem">Foto:</label><br>
-            <input type="file" name="imagem" id="imagem">
-        </p>
-        <p><input type="submit" value="Cadastrar"></p>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Atualiza Membro da Diretoria{% endblock %} 
+{% block link %}terrenos{% endblock %} 
+{% block content %}
+<h1>Atualiza Membro da Diretoria</h1>
+<form method="POST" enctype="multipart/form-data">
+		<div>
+				<label for="cpf">CPF:</label><br>
+				<input type="text" name="cpf" id="cpf" size="32">
+		</div>
+		<div>
+				<label for="cargo">Cargo:</label><br>
+				<input type="text" name="cargo" id="cargo" size="32">
+		</div>
+		<div>
+				<label for="nome_completo">Nome Completo:</label><br>
+				<input type="text" name="nome_completo" id="nome_completo" size="32">
+		</div>
+		<div>
+				<label for="imagem">Foto:</label><br>
+				<input type="file" name="imagem" id="imagem">
+		</div>
+		<input type="submit" value="Cadastrar">
+		
+</form>
+{% endblock %}

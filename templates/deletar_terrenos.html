@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
-    <title>Deletar Terrenos</title>
-</head>
-<body>
-    <h1>Deletar Terrenos</h1>
+{% comment %}  {% endcomment %}
+{% extends "base.html" %}
+ {% comment %}  {% endcomment %}
+{% block title %}Deletar Terrenos{% endblock %} 
+{% comment %}  {% endcomment %}
+{% block link %}terrenos{% endblock %} 
+{% comment %}  {% endcomment %}
+{% block content %}
+<h1>Deletar Terrenos</h1>
     <form method="POST" action="{{ url_for('listar_terrenos_para_deletar') }}">
         <input type="text" name="busca" placeholder="Buscar por Lote">
         <button type="submit">Buscar</button>
@@ -33,4 +32,4 @@
         {% endfor %}
     </table>
 </body>
-</html>
+{% endblock %}
