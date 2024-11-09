@@ -1,37 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Acepraf{% endblock %}</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/index.css') }}"
-    />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}Acepraf{% endblock %}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
 		{% block link %}{% endblock %}
-    
-  </head>
-  <body>
-    <header>
-      <h1>Meu Cabeçalho</h1>
-      <nav>
-        <ul>
-          <li><a href="/">Início</a></li>
-          <li><a href="/outra_pagina">Outra Página</a></li>
-        </ul>
-      </nav>
-      <div>
-        {% if current_user.username %}
-        <p>Bem-vindo, {{ current_user.username }}!</p>
-        <a href="/logout">Logout</a>
-        {% else %}
-        <a href="/login">Login</a>
-        {% endif %}
-      </div>
-    </header>
-    <main>{% block content %} {% endblock %}</main>
-    <footer>
-      <p>Meu Rodapé</p>
-    </footer>
-  </body>
+	</head>
+	<body>
+		{% include "partials/header.html" %}
+		{% block content %} {% endblock %}
+		{% include "partials/footer.html" %}
+	</body>
 </html>

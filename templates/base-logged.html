@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Área Administrativa{% endblock %}
+{% block link %}{% block link2 %} {% endblock %}{% endblock %}
+{% block content %}
+{% include "partials/aside.html" %}
+<main>
+	<h1>Bem-vindo, {{ current_user.username }}!</h1>
+	{% block section %} {% endblock %}
+</main>
+{% endblock %}

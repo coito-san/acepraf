@@ -1,36 +1,38 @@
 {% extends "base.html" %} {% block title %}Registrar Contribuição{% endblock %}
 {% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='css/registrar_contribuicao.css') }}" />{% endblock %} {% block content %}
-<h1>Registrar Contribuição</h1>
-<form method="POST">
-  <p>
-    <label for="terreno_id">Morador:</label><br />
-    <select name="terreno_id" id="terreno_id">
-      {% for terreno in terrenos %}
-      <option value="{{ terreno.id }}">{{ terreno.nome_completo }}</option>
-      {% endfor %}
-    </select>
-  </p>
-  <p>
-    <label for="valor">Valor(use ponto para seprar os centavos):</label><br />
-    <input type="text" name="valor" id="valor" />
-  </p>
-  <p>
-    <label for="data">Data:</label><br />
-    <input type="date" name="data" id="data" />
-  </p>
-  <p>
-    <label for="tipo_contribuicao">Tipo de Contribuição:</label><br />
-    <select name="tipo_contribuicao" id="tipo_contribuicao">
-      {% for tipo in tipos_contribuicao_padrao %}
-      <option value="{{ tipo }}">{{ tipo }}</option>
-      {% endfor %}
-      <option value="Outro">Outro</option>
-    </select>
-  </p>
-  <p>
-    <label for="observacao">Observação:</label><br />
-    <textarea name="observacao" id="observacao"></textarea>
-  </p>
-  <p><input type="submit" value="Registrar" /></p>
-</form>
+<main>
+	<h1>Registrar Contribuição</h1>
+	<form method="POST">
+		<p>
+			<label for="terreno_id">Morador:</label><br />
+			<select name="terreno_id" id="terreno_id">
+				{% for terreno in terrenos %}
+				<option value="{{ terreno.id }}">{{ terreno.nome_completo }}</option>
+				{% endfor %}
+			</select>
+		</p>
+		<p>
+			<label for="valor">Valor(use ponto para seprar os centavos):</label><br />
+			<input type="text" name="valor" id="valor" />
+		</p>
+		<p>
+			<label for="data">Data:</label><br />
+			<input type="date" name="data" id="data" />
+		</p>
+		<p>
+			<label for="tipo_contribuicao">Tipo de Contribuição:</label><br />
+			<select name="tipo_contribuicao" id="tipo_contribuicao">
+				{% for tipo in tipos_contribuicao_padrao %}
+				<option value="{{ tipo }}">{{ tipo }}</option>
+				{% endfor %}
+				<option value="Outro">Outro</option>
+			</select>
+		</p>
+		<p>
+			<label for="observacao">Observação:</label><br />
+			<textarea name="observacao" id="observacao"></textarea>
+		</p>
+		<p><input type="submit" value="Registrar" /></p>
+	</form>
+</main>
 {% endblock %}

@@ -8,20 +8,13 @@ $pagination-btn-hover: darken($pagination-btn-color, 10%);
 $text-color: #333;
 $font-family: Arial, sans-serif;
 
-// Estilos globais
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: $font-family;
   color: $text-color;
   background-color: #f9f9f9;
-  padding: 1rem;
-}
+	grid-template-columns: 0px 1fr;
 
+}
 // Título da página
 h1 {
   font-size: 2rem;

@@ -9,13 +9,6 @@ $button-bg: $primary-color;
 $button-hover: lighten($primary-color, 10%);
 $font-family: Arial, sans-serif;
 
-// Estilos globais
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 main {
   font-family: $font-family;
   background-color: $bg-color;
@@ -25,6 +18,8 @@ main {
 	flex-direction: column;
   align-items: center;
   min-height: 80vh;
+	grid-template-columns: 0px 1fr;
+
 }
 
 // Títulos
