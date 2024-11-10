@@ -18,12 +18,14 @@
 					<th>Nome Completo</th>
 				</tr>
 			</thead>
-			{% for terreno in terrenos %}
-			<tr>
-				<td>{{ terreno.lote }}</td>
-				<td>{{ terreno.nome_completo }}</td>
-			</tr>
-			{% endfor %}
+			<tbody>
+				{% for terreno in terrenos %}
+				<tr>
+					<td>{{ terreno.lote }}</td>
+					<td>{{ terreno.nome_completo }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
 		</table>
 		<div class="pagination">
 			{% if pagination.has_prev %}

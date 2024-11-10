@@ -65,11 +65,6 @@ body header nav ul li a {
 body header nav ul li a:hover {
   color: #507192;
 }
-body header div {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
 body header div p {
   margin: 0;
   font-size: 1rem;
@@ -183,7 +178,7 @@ body main {
 }
 body main > section {
   display: flex;
-  padding: 100px 30px;
+  padding: 70px 30px;
   align-items: center;
   flex-direction: column;
   background: #fff;
@@ -227,13 +222,29 @@ body main > section > form div label {
   font-weight: 900;
 }
 body main > section > form div input,
-body main > section > form div select {
+body main > section > form div select,
+body main > section > form div textarea {
   width: 100%;
   padding: 15px;
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
+  resize: vertical;
+}
+body main > section > form div textarea {
+  height: 150px;
+  min-height: 100px;
+  transition: 50ms;
+}
+body main > section > form div textarea::-webkit-scrollbar {
+  width: 5px;
+}
+body main > section > form div textarea::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+body main > section > form div textarea::-webkit-scrollbar-thumb {
+  background: #2c3e50;
 }
 body main > section > form button {
   background-color: #f5f5f5;
@@ -301,9 +312,12 @@ body main > section table td {
   text-align: left;
 }
 body main > section table thead {
+  position: relative;
   background-color: #2c3e50;
 }
 body main > section table thead tr {
+  position: sticky;
+  top: 0;
   border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
 body main > section table thead tr th {
@@ -314,7 +328,8 @@ body main > section table thead tr th {
   z-index: 1;
 }
 body main > section table tbody tr td {
-  border-bottom: 1px solid #ddd;
+  color: #2c3e50;
+  font-weight: 500;
 }
 body main > section table tbody tr:nth-child(even) {
   background-color: #f5f5f5;

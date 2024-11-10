@@ -9,7 +9,7 @@
 
 	<form method="POST">
 		<div>
-			<label for="terreno_id">Morador:</label><br />
+			<label for="terreno_id">Morador</label>
 			<select name="terreno_id" id="terreno_id">
 				{% for terreno in terrenos %}
 				<option value="{{ terreno.id }}">{{ terreno.nome_completo }}</option>
@@ -17,15 +17,15 @@
 			</select>
 		</div>
 		<div>
-			<label for="valor">Valor(use ponto para seprar os centavos):</label><br />
-			<input type="text" name="valor" id="valor" />
+			<label for="valor">Valor</label>
+			<input type="text" name="valor" id="valor" placeholder="Ex:. 00.00"/>
 		</div>
 		<div>
-			<label for="data">Data:</label><br />
+			<label for="data">Data</label>
 			<input type="date" name="data" id="data" />
 		</div>
 		<div>
-			<label for="tipo_contribuicao">Tipo de Contribuição:</label><br />
+			<label for="tipo_contribuicao">Tipo de Contribuição</label>
 			<select name="tipo_contribuicao" id="tipo_contribuicao">
 				{% for tipo in tipos_contribuicao_padrao %}
 				<option value="{{ tipo }}">{{ tipo }}</option>
@@ -34,8 +34,8 @@
 			</select>
 		</div>
 		<div>
-			<label for="observacao">Observação:</label><br />
-			<textarea name="observacao" id="observacao"></textarea>
+			<label for="observacao">Observação</label>
+			<textarea name="observacao" id="observacao" placeholder="Ex:. Minha observação para esta contribuição"></textarea>
 		</div>
 		<button type="submit">Registrar</button>
 	</form>

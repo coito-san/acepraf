@@ -21,18 +21,20 @@
 				<th>Ação</th>
 			</tr>
 		</thead>
-		{% for terreno in terrenos %}
-		<tr>
-			<td>{{ terreno.lote }}</td>
-			<td>{{ terreno.cpf }}</td>
-			<td>{{ terreno.nome_completo }}</td>
-			<td>
-				<form action="{{ url_for('deletar_terreno', id=terreno.id) }}" method="post">
-					<button type="submit" class="delete">Deletar</button>
-				</form>
-			</td>
-		</tr>
-		{% endfor %}
+		<tbody>
+			{% for terreno in terrenos %}
+			<tr>
+				<td>{{ terreno.lote }}</td>
+				<td>{{ terreno.cpf }}</td>
+				<td>{{ terreno.nome_completo }}</td>
+				<td>
+					<form action="{{ url_for('deletar_terreno', id=terreno.id) }}" method="post">
+						<button type="submit" class="delete">Deletar</button>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
 	</table>
 </section>
 {% endblock %}

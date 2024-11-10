@@ -1,5 +1,35 @@
-@use 'variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+// colors
+$primary-color: #2c3e50;
+$secondary-color: #34495e;
+$accent-color: #16a085;
+
+// Cor dos textos com fundos claros
+$darker-text-color-primary: #100048;
+$darker-text-color-secondary: #727272;
+
+// Cor dos textos com fundos escuros
+$light-text-color-primary: #fff;
+$light-text-color-secondary: #b6b6b6;
+
+// Cor dos backgrounds
+$bg-body-color: #f9f9f9;
+$bg-color: #f9f9f9;
+
+// Cor dos botões
+$button-color: $primary-color;
+$button-color: #fff;
+$button-hover-bg: darken($primary-color, 10%);
+$button-hover-color: #fff;
+
+// Cor das tables
+$table-border-color: #ddd;
+$table-header-bg: #f2f2f2;
+
+// Cor dos forms
+$input-border: #ddd;
+$input-bg: #fff;
+$input-focus: darken($primary-color, 10%);
 
 
 // Estilos globais
@@ -83,12 +113,7 @@ body {
 			}
 		}
 
-		// Div de autenticação
 		div {
-			display: flex;
-			align-items: center;
-			gap: 1rem;
-
 			p {
 				margin: 0;
 				font-size: 1rem;
@@ -226,7 +251,7 @@ body {
 
 		> section {
 			display: flex;
-			padding: 100px 30px;
+			padding: 70px 30px;
 			align-items: center;
 			flex-direction: column;
 			background: #fff;
@@ -275,13 +300,33 @@ body {
 					}
 
 					input,
-					select {
+					select,
+					textarea {
 						width: 100%;
 						padding: 15px;
 						font-size: 1rem;
 						border: 1px solid $input-border;
 						border-radius: 4px;
 						box-sizing: border-box;
+						resize: vertical;
+					}
+
+					textarea {
+						height: 150px;
+						min-height: 100px;
+						transition: 50ms;
+
+						&::-webkit-scrollbar {
+							width: 5px;
+						}
+
+						&::-webkit-scrollbar-track {
+							background: $bg-color;
+						}
+
+						&::-webkit-scrollbar-thumb {
+							background: $primary-color;
+						}
 					}
 				}
 
@@ -366,10 +411,14 @@ body {
 				}
 
 				thead {
+					position: relative;
 					background-color: $primary-color;
-					
+
 					tr {
+						position: sticky;
+						top: 0;
 						border-bottom: 2px solid #0000;
+
 						th {
 							position: sticky;
 							top: 0;
@@ -382,15 +431,17 @@ body {
 
 				tbody {
 					tr {
-						td {
-							border-bottom: 1px solid $table-border-color;
 
+						td {
+							color: $primary-color;
+							font-weight: 500;
 						}
 
 						&:nth-child(even) {
 							background-color: #f5f5f5;
 						}
-						&:hover{
+
+						&:hover {
 							background: rgba(43, 61, 79, 0.15);
 						}
 					}
