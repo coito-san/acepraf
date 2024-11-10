@@ -115,7 +115,9 @@ body {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		height: 100dvh;
 		position: sticky;
+		top: 0;
 
 		nav {
 			h3 {
@@ -307,7 +309,7 @@ body {
 
 			.search {
 				margin-bottom: 20px;
-				
+
 				form {
 					display: flex;
 					justify-content: space-between;
@@ -315,10 +317,10 @@ body {
 					max-width: 800px;
 					min-width: 350px;
 					width: 90%;
-					
+
 					input {
 						background: #f5f5f5;
-						border-radius:  4px 0 0 4px;
+						border-radius: 4px 0 0 4px;
 						padding: 10px 15px;
 						font-size: 1rem;
 						border-radius: 4px;
@@ -327,10 +329,10 @@ body {
 					}
 
 					button {
-						padding: 10px ;
+						padding: 10px;
 						background-color: #e4e4e4;
 						font-weight: bold;
-						border-radius:  0 4px 4px 0;
+						border-radius: 0 4px 4px 0;
 						color: $primary-color;
 						font-size: 1rem;
 
@@ -346,59 +348,79 @@ body {
 				width: 100%;
 				border-collapse: collapse;
 				border-spacing: 0;
-				margin-bottom: 1.5rem;
+				position: relative;
 
-				form button.delete{
+				form button.delete {
 					color: red;
-					&:hover{
+
+					&:hover {
 						text-decoration: underline;
 					}
-				}
-
-				thead {
-					background-color: $table-header-bg;
 				}
 
 				th,
 				td {
 					padding: 10px;
-					border-bottom: 1px solid $table-border-color;
 					text-align: left;
+
 				}
 
-				th {
-					background-color: $table-header-bg;
+				thead {
+					background-color: $primary-color;
+					
+					tr {
+						border-bottom: 2px solid #0000;
+						th {
+							position: sticky;
+							top: 0;
+							color: #ffffff;
+							text-transform: uppercase;
+							z-index: 1;
+						}
+					}
 				}
 
-				tr:nth-child(even) {
-					background-color: $bg-color;
-				}
+				tbody {
+					tr {
+						td {
+							border-bottom: 1px solid $table-border-color;
 
+						}
+
+						&:nth-child(even) {
+							background-color: #f5f5f5;
+						}
+						&:hover{
+							background: rgba(43, 61, 79, 0.15);
+						}
+					}
+
+				}
 			}
+		}
 
-			.pagination {
-				margin-top: 20px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+		.pagination {
+			margin-top: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-				button {
-					padding: 8px 15px;
-					margin: 0 5px;
-					border: none;
-					border-radius: 4px;
-					font-size: 0.9rem;
-					cursor: pointer;
-					background-color: $secondary-color;
+			button {
+				padding: 8px 15px;
+				margin: 0 5px;
+				border: none;
+				border-radius: 4px;
+				font-size: 0.9rem;
+				cursor: pointer;
+				background-color: $secondary-color;
 
-					&:hover {
-						background-color: $accent-color;
-					}
+				&:hover {
+					background-color: $accent-color;
+				}
 
-					&:disabled {
-						color: $secondary-color;
-						cursor: not-allowed;
-					}
+				&:disabled {
+					color: $secondary-color;
+					cursor: not-allowed;
 				}
 			}
 		}

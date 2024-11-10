@@ -13,12 +13,14 @@
 		</form>
 	</div>
 	<table>
-		<tr>
-			<th>Lote</th>
-			<th>CPF</th>
-			<th>Nome Completo</th>
-			<th>Ação</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>Lote</th>
+				<th>CPF</th>
+				<th>Nome Completo</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
 		{% for terreno in terrenos %}
 		<tr>
 			<td>{{ terreno.lote }}</td>

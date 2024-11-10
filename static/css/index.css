@@ -91,7 +91,9 @@ body aside {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100dvh;
   position: sticky;
+  top: 0;
 }
 body aside nav h3 {
   margin-top: 0;
@@ -285,7 +287,7 @@ body main > section table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-bottom: 1.5rem;
+  position: relative;
 }
 body main > section table form button.delete {
   color: red;
@@ -293,28 +295,40 @@ body main > section table form button.delete {
 body main > section table form button.delete:hover {
   text-decoration: underline;
 }
-body main > section table thead {
-  background-color: #f2f2f2;
-}
 body main > section table th,
 body main > section table td {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
   text-align: left;
 }
-body main > section table th {
-  background-color: #f2f2f2;
+body main > section table thead {
+  background-color: #2c3e50;
 }
-body main > section table tr:nth-child(even) {
-  background-color: #f9f9f9;
+body main > section table thead tr {
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
-body main > section .pagination {
+body main > section table thead tr th {
+  position: sticky;
+  top: 0;
+  color: #ffffff;
+  text-transform: uppercase;
+  z-index: 1;
+}
+body main > section table tbody tr td {
+  border-bottom: 1px solid #ddd;
+}
+body main > section table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+body main > section table tbody tr:hover {
+  background: rgba(43, 61, 79, 0.15);
+}
+body main .pagination {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-body main > section .pagination button {
+body main .pagination button {
   padding: 8px 15px;
   margin: 0 5px;
   border: none;
@@ -323,10 +337,10 @@ body main > section .pagination button {
   cursor: pointer;
   background-color: #34495e;
 }
-body main > section .pagination button:hover {
+body main .pagination button:hover {
   background-color: #16a085;
 }
-body main > section .pagination button:disabled {
+body main .pagination button:disabled {
   color: #34495e;
   cursor: not-allowed;
 }
