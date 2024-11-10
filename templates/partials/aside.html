@@ -1,38 +1,35 @@
 <aside class="sidebar">
-	<h2>Gerenciamento</h2>
-	<ul>
-		<li>
-			<a href="{{ url_for('admin') }}">Inicio</a>
-		</li>
-		<li>
-			<a href="{{ url_for('cadastro') }}">Cadastrar novo terreno</a>
-		</li>
-		<li>
-			<a href="{{ url_for('listar_terrenos_para_deletar') }}">Deletar Terreno</a>
-		</li>
-		<li>
-			<a href="{{ url_for('atualiza_membro_diretoria') }}">Adicionar membro da Diretoria</a>
-		</li>
-	</ul>
-	<h2>Usuários</h2>
-	<ul>
-		<li>
-			<a href="{{ url_for('cadastro_usuario') }}">
-				<button type="button">Cadastrar novo usuário</button>
-			</a>
-		</li>
-		<li>
-			<a href="{{ url_for('logout') }}">
-				<button type="button">Logout</button>
-			</a>
-		</li>
-	</ul>
-	<h2>Financeiro</h2>
-	<ul>
-		<li>
-			<a href="{{ url_for('tesouraria') }}">
-				<button type="button">Tesouraria</button>
-			</a>
-		</li>
-	</ul>
+	<nav>
+		<h3>Gerenciamento</h3>
+		<ul>
+			<li>
+				<a href="{{ url_for('admin') }}">Inicio</a>
+			</li>
+			<li>
+				<a href="{{ url_for('cadastro') }}">Cadastrar novo terreno</a>
+			</li>
+			<li>
+				<a href="{{ url_for('listar_terrenos_para_deletar') }}">Deletar Terreno</a>
+			</li>
+		</ul>
+		<h3>Usuários</h3>
+		<ul>
+			<li>
+				<a href="{{ url_for('cadastro_usuario') }}"> Cadastrar admin </a>
+			</li>
+			<li>
+				<a href="{{ url_for('atualiza_membro_diretoria') }}">Adicionar membro da Diretoria</a>
+			</li>
+		</ul>
+		<h3>Tesouraria</h3>
+		<ul>
+			<li>
+				<a href="{{ url_for('registrar_contribuicao') }}"> Registrar contribuição </a>
+			</li>
+			<li>
+				<a href="{{ url_for('visualizar_contribuicoes') }}"> Visualizar contribuições </a>
+			</li>
+		</ul>
+	</nav>
+	{% include "partials/footer.html" %}
 </aside>

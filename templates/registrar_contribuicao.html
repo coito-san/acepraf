@@ -1,25 +1,30 @@
-{% extends "base.html" %} {% block title %}Registrar Contribuição{% endblock %}
-{% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='css/registrar_contribuicao.css') }}" />{% endblock %} {% block content %}
-<main>
-	<h1>Registrar Contribuição</h1>
+{% extends "base-logged.html" %}
+{% block title %}Registrar Contribuição{% endblock %}
+{% block link2 %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/registrar_contribuicao.css') }}" />{% endblock %}
+{% block section %}
+<section>
+	<h2>Registrar Contribuição</h2>
+	<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit facere, officia non</p>
+
 	<form method="POST">
-		<p>
+		<div>
 			<label for="terreno_id">Morador:</label><br />
 			<select name="terreno_id" id="terreno_id">
 				{% for terreno in terrenos %}
 				<option value="{{ terreno.id }}">{{ terreno.nome_completo }}</option>
 				{% endfor %}
 			</select>
-		</p>
-		<p>
+		</div>
+		<div>
 			<label for="valor">Valor(use ponto para seprar os centavos):</label><br />
 			<input type="text" name="valor" id="valor" />
-		</p>
-		<p>
+		</div>
+		<div>
 			<label for="data">Data:</label><br />
 			<input type="date" name="data" id="data" />
-		</p>
-		<p>
+		</div>
+		<div>
 			<label for="tipo_contribuicao">Tipo de Contribuição:</label><br />
 			<select name="tipo_contribuicao" id="tipo_contribuicao">
 				{% for tipo in tipos_contribuicao_padrao %}
@@ -27,12 +32,12 @@
 				{% endfor %}
 				<option value="Outro">Outro</option>
 			</select>
-		</p>
-		<p>
+		</div>
+		<div>
 			<label for="observacao">Observação:</label><br />
 			<textarea name="observacao" id="observacao"></textarea>
-		</p>
-		<p><input type="submit" value="Registrar" /></p>
+		</div>
+		<button type="submit">Registrar</button>
 	</form>
-</main>
+</section>
 {% endblock %}

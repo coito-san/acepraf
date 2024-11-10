@@ -4,25 +4,26 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_diretoria.css') }}" />{% endblock %}
 {% block section %}
 <section>
-	<h1>Atualiza Membro da Diretoria</h1>
+	<h2>Atualiza Membro da Diretoria</h2>
+	<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit facere, officia non</p>
 	<form method="POST" enctype="multipart/form-data">
 		<div>
-			<label for="cpf">CPF:</label><br>
+			<label for="cpf">CPF</label>
 			<input type="text" name="cpf" id="cpf" size="32">
 		</div>
 		<div>
-			<label for="cargo">Cargo:</label><br>
+			<label for="cargo">Cargo</label>
 			<input type="text" name="cargo" id="cargo" size="32">
 		</div>
 		<div>
-			<label for="nome_completo">Nome Completo:</label><br>
+			<label for="nome_completo">Nome Completo</label>
 			<input type="text" name="nome_completo" id="nome_completo" size="32">
 		</div>
 		<div>
-			<label for="imagem">Foto:</label><br>
+			<label for="imagem">Foto</label>
 			<input type="file" name="imagem" id="imagem">
 		</div>
-		<input type="submit" value="Cadastrar">
+		<button type="submit">Cadastrar</button>
 	</form>
 </section>
 {% endblock %}

@@ -1,12 +1,28 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %} 
-{% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />{% endblock %} 
+{% block title %}Login{% endblock %}
+{% block link %}
+<style>
+	body {
+		grid-template-columns: 0px 1fr;
+	}
+</style>
+{% endblock %}
 {% block content %}
-<h1>AREA ADMINISTRATIVA</h1>
-    <form action="{{ url_for('login') }}" method="post" target="_parent">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Entrar</button>
-    </form>
-		
+<main>
+	<section>
+		<h2>AREA ADMINISTRATIVA</h2>
+		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit facere, officia non</p>
+		<form action="{{ url_for('login') }}" method="post" target="_parent">
+			<div>
+				<label for="">Nome de Usuário</label>
+				<input type="text" name="username" placeholder="Username" required>
+			</div>
+			<div>
+				<label for="">Senha</label>
+				<input type="password" name="password" placeholder="Password" required>
+			</div>
+			<button type="submit">Entrar</button>
+		</form>
+	</section>
+</main>
 {% endblock %}

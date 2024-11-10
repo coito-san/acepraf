@@ -1,0 +1,30 @@
+$primary-color: #2c3e50;
+$secondary-color: #34495e;
+$accent-color: #16a085;
+
+// Cor dos textos com fundos claros
+$darker-text-color-primary: #100048;
+$darker-text-color-secondary: #727272;
+
+// Cor dos textos com fundos escuros
+$light-text-color-primary: #fff;
+$light-text-color-secondary: #b6b6b6;
+
+// Cor dos backgrounds
+$bg-body-color: #f9f9f9;
+$bg-color: #f9f9f9;
+
+// Cor dos botões
+$button-color: $primary-color;
+$button-color: #fff;
+$button-hover-bg: darken($primary-color, 10%);
+$button-hover-color: #fff;
+
+// Cor das tables
+$table-border-color: #ddd;
+$table-header-bg: #f2f2f2;
+
+// Cor dos forms
+$input-border: #ddd;
+$input-bg: #fff;
+$input-focus: darken($primary-color, 10%);

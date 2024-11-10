@@ -1,35 +1,42 @@
-{% extends "base.html" %} {% block title %}Visualizar Contribuições{% endblock
-%} {% block link %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/visualizar_contribuicoes.css') }}" />{% endblock %} {% block content %}
-<h1>Visualizar Contribuições</h1>
-<form method="POST">
-	<p>
-		<label for="tipo_contribuicao">Tipo de Contribuição:</label><br />
-		<select name="tipo_contribuicao" id="tipo_contribuicao">
-			{% for tipo in tipos_contribuicao_padrao %}
-			<option value="{{ tipo }}">{{ tipo }}</option>
-			{% endfor %}
-			<option value="Outro">Outro</option>
-		</select>
-	</p>
-	<p>
-		<label for="mes">Mês:</label><br />
-		<input type="number" name="mes" id="mes" min="1" max="12" />
-	</p>
-	<p>
-		<label for="ano">Ano:</label><br />
-		<input type="number" name="ano" id="ano" min="2000" max="2100" />
-	</p>
-	<p><input type="submit" value="Buscar" /></p>
-</form>
-{% if contribuicoes %}
-<h2>Contribuições Encontradas</h2>
-<ul>
-	{% for contribuicao in contribuicoes %}
-	<li>
-		{{ contribuicao.terreno.nome_completo }} - {{ contribuicao.valor }} - {{
-    contribuicao.data }}
-	</li>
-	{% endfor %}
-</ul>
-{% endif %} {% endblock %}
+{% extends "base-logged.html" %}
+{% block title %}Visualizar Contribuições{% endblock %}
+{% block link2 %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/visualizar_contribuicoes.css') }}" />{% endblock %}
+{% block section %}
+<section>
+	<h2>Visualizar Contribuições</h2>
+	<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit facere, officia non</p>
+
+	<form method="POST">
+		<div>
+			<label for="tipo_contribuicao">Tipo de Contribuição:</label>
+			<select name="tipo_contribuicao" id="tipo_contribuicao">
+				{% for tipo in tipos_contribuicao_padrao %}
+				<option value="{{ tipo }}">{{ tipo }}</option>
+				{% endfor %}
+				<option value="Outro">Outro</option>
+			</select>
+		</div>
+		<div>
+			<label for="mes">Mês:</label>
+			<input type="number" name="mes" id="mes" min="1" max="12"/>
+		</div>
+		<div>
+			<label for="ano">Ano:</label>
+			<input type="number" name="ano" id="ano" min="2000" max="2100" />
+		</div>
+		<button type="submit">Buscar</button>
+	</form>
+	{% if contribuicoes %}
+	<h2>Contribuições Encontradas</h2>
+	<ul>
+		{% for contribuicao in contribuicoes %}
+		<li>
+			{{ contribuicao.terreno.nome_completo }} - {{ contribuicao.valor }} - {{
+			contribuicao.data }}
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+{% endif %}
+{% endblock %}

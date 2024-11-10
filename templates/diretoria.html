@@ -1,33 +1,32 @@
-{% extends "base.html" %}
-{% block title %}Diretoria ACPRAF{% endblock %}
+{% extends "base-logged.html" %}
+{% block title %}Diretoria ACEPRAF{% endblock %}
 {% block link %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/diretoria.css') }}" />
 {% endblock %}
-{% block content %}
-<h1>Conheça a Diretoria</h1>
+{% block section %}
+<section>
+	<h2>Conheça a Diretoria</h2>
+	<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit facere, officia non</p>
 
-<div class="diretoria">
-  <div class="diretor">
-    <div class="foto">
-      <img src="{{ url_for('static', filename='images/diretor1.jpg') }}" alt="Foto do Diretor">
-    </div>
-    <div class="informacoes">
-      <h2>Nome do Diretor</h2>
-      <p>Cargo: Presidente</p>
-    </div>
-  </div>
-
-  <div class="diretor">
-    <div class="foto">
-      <img src="{{ url_for('static', filename='images/diretor2.jpg') }}" alt="Foto do Diretor">
-    </div>
-    <div class="informacoes">
-      <h2>Nome do Diretor</h2>
-      <p>Cargo: Vice-presidente</p>
-    </div>
-  </div>
-
-  <!-- Adicione mais diretores aqui conforme necessário -->
-</div>
-
+	<div class="diretoria">
+		<div class="diretor">
+			<div class="foto">
+				<img src="{{ url_for('static', filename='images/diretor1.jpg') }}" alt="Foto do Diretor">
+			</div>
+			<div class="informacoes">
+				<h2>Nome do Diretor</h2>
+				<p>Cargo: Presidente</p>
+			</div>
+		</div>
+		<div class="diretor">
+			<div class="foto">
+				<img src="{{ url_for('static', filename='images/diretor2.jpg') }}" alt="Foto do Diretor">
+			</div>
+			<div class="informacoes">
+				<h2>Nome do Diretor</h2>
+				<p>Cargo: Vice-presidente</p>
+			</div>
+		</div>
+	</div>
+</section>
 {% endblock %}

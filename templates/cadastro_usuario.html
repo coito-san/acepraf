@@ -1,13 +1,21 @@
-{% extends "base.html" %}
-{% block title %}Cadastro de Usuário{% endblock %} 
-{% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_usuario.css') }}" />{% endblock %} 
-{% block content %}
-<h1>Cadastro de Administrador</h1>
+{% extends "base-logged.html" %}
+{% block title %}Cadastro de Usuário{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_usuario.css') }}" />{% endblock %}
+{% block section %}
+<section>
+	<h2>Cadastro de Administrador</h2>
+	<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit facere, officia non</p>
 	<form method="POST" action="{{ url_for('cadastro_usuario') }}">
-		<input type="text" id="username" name="username" placeholder="Nome de Usuario" required>
-		<input type="password" id="password" name="password" placeholder="Senha" required>
-		</select>
+		<div>
+			<label for="">Username</label>
+			<input type="text" id="username" name="username" placeholder="Nome de Usuario" required>
+		</div>
+		<div>
+			<label for="">Senha</label>
+			<input type="password" id="password" name="password" placeholder="Senha" required>
+		</div>
 		<button type="submit">Cadastrar</button>
 	</form>
-	<a href="{{ url_for('admin') }}"><button type="button">Voltar para a área administrativa</button></a>
+</section>
 {% endblock %}

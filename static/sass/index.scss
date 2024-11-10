@@ -1,13 +1,6 @@
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$text-color: #333;
-$bg-color: #f8f9fa;
-$font-family: Arial, sans-serif;
-$primary-color: #2c3e50;
-$secondary-color: #34495e;
-$accent-color: #1abc9c;
-$text-color: #ecf0f1;
-$background-color: #f4f6f8;
+@use 'variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 
 // Estilos globais
 * {
@@ -17,19 +10,21 @@ $background-color: #f4f6f8;
 	text-decoration: none;
 	box-sizing: border-box;
 	list-style: none;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Inter', sans-serif;
 	transition: 300ms ease-in-out;
-	color: $text-color;
 	background: transparent;
-	// outline: 1px dotted ;
+	border: none;
+	// outline: 1px dotted;
+	color: #000;
+}
 
+button,
+a {
+	cursor: pointer;
 }
 
 body {
-	font-family: $font-family;
-	background-color: $bg-color;
-	color: $text-color;
-	line-height: 1.6;
+	background-color: #f5f5f5;
 	width: 100vw;
 	min-width: 320px;
 	overflow-x: hidden;
@@ -47,7 +42,6 @@ body {
 
 	&::-webkit-scrollbar-thumb {
 		background: $primary-color;
-		border-radius: 10px;
 	}
 
 	header {
@@ -61,6 +55,12 @@ body {
 
 		h1 {
 			font-size: 1.5rem;
+			color: #fff;
+		}
+
+		p {
+			color: #fff;
+
 		}
 
 		nav {
@@ -109,83 +109,299 @@ body {
 	}
 
 	aside {
-		width: 250px;
 		background-color: $primary-color;
-		color: $text-color;
 		padding: 20px;
 		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		position: sticky;
 
-		h2 {
-			margin-top: 0;
-			margin-bottom: 10px;
-			font-size: 1.2rem;
-			border-bottom: 1px solid $secondary-color;
-			padding-bottom: 5px;
+		nav {
+			h3 {
+				margin-top: 0;
+				margin-bottom: 10px;
+				font-size: 1.2rem;
+				border-bottom: 1px solid $secondary-color;
+				margin-bottom: 1rem;
+				color: $light-text-color-primary;
+				font-style: italic;
+				font-weight: 100;
+			}
+
+			ul {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				margin: 0 0 2rem 1rem;
+
+				li {
+
+
+					a {
+						display: block;
+						width: 100%;
+						padding: 10px;
+						text-align: left;
+						border: none;
+						border-radius: 4px;
+						color: #f5f5f5;
+						font-size: 1rem;
+						cursor: pointer;
+						font-size: 1rem;
+						font-weight: 600;
+						transition: background-color 0.3s;
+
+						&:hover {
+							background-color: #f5f5f5;
+							color: $primary-color;
+						}
+
+						&.active {
+							background-color: #f5f5f5;
+							color: $primary-color;
+						}
+					}
+				}
+			}
 		}
 
-		ul {
-			list-style: none;
-			padding: 0;
+		footer {
+			color: white;
+			text-align: center;
+			padding: 1rem;
+			font-size: 0.9rem;
+			grid-column: 1/-1;
 
-			li {
+
+			> a {
+				display: block;
+				width: 100%;
+				padding: 10px;
+				text-align: center;
+				border: 2px solid #fff;
+				color: #fff;
+				border-radius: 4px;
+				text-decoration: none;
+				font-size: 1rem;
+				font-weight: 900;
 				margin-bottom: 10px;
 
-				button,
+				&:hover {
+					background-color: #fff;
+					color: $primary-color;
+				}
+			}
+
+			p {
+				font-size: 0.7rem;
+				color: #fff;
+				opacity: 0.4;
+
 				a {
-					display: block;
-					width: 100%;
-					padding: 10px;
-					text-align: left;
-					border: none;
-					border-radius: 4px;
-					background-color: $secondary-color;
-					color: $text-color;
-					text-decoration: none;
-					font-size: 1rem;
-					cursor: pointer;
-					transition: background-color 0.3s;
+					text-decoration: underline;
+					color: #fff;
+					font-style: italic;
+					font-weight: 600;
 
 					&:hover {
-						background-color: $accent-color;
+						color: #fff;
+						opacity: 1;
+						letter-spacing: 1px;
 					}
 				}
 			}
 		}
 	}
 
-
-
 	main {
 		grid-column: 2/3;
-
-		padding: 2rem;
-		min-height: 60vh;
-		background-color: white;
-		width: 100%;
-		flex: 1 300 1;
 		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
 		min-height: 100vh;
+		padding: 1rem;
+		overflow-y: hidden;
 
 		> section {
 			display: flex;
+			padding: 100px 30px;
 			align-items: center;
-			justify-content: center;
 			flex-direction: column;
+			background: #fff;
+			width: 100%;
+			height: 100%;
+
+			h2 {
+				font-size: 2rem;
+				color: $darker-text-color-primary;
+				margin-bottom: 0.5rem;
+				text-align: center;
+				text-transform: capitalize;
+			}
+
+			p {
+				font-size: 1rem;
+				color: $darker-text-color-secondary;
+				text-align: center;
+				margin-bottom: 1.5rem;
+			}
+
+			> form {
+				max-width: 800px;
+				width: 90%;
+				min-width: 800px;
+				margin: 0 auto;
+				padding: 25px;
+				border-radius: 8px;
+				box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
+
+				div {
+					margin-bottom: 20px;
+
+					p {
+						margin-bottom: 15px;
+					}
+
+					label {
+						font-size: 1rem;
+						color: $primary-color;
+						margin-bottom: 5px;
+						display: block;
+						opacity: 0.8;
+						font-weight: 900;
+
+					}
+
+					input,
+					select {
+						width: 100%;
+						padding: 15px;
+						font-size: 1rem;
+						border: 1px solid $input-border;
+						border-radius: 4px;
+						box-sizing: border-box;
+					}
+				}
+
+				button {
+					background-color: #f5f5f5;
+					color: opacify($color: $primary-color, $amount: 0);
+					padding: 15px 15px;
+					font-size: 1rem;
+					border-radius: 4px;
+
+					width: 100%;
+					margin-top: 20px;
+					font-weight: 900;
+					text-transform: uppercase;
+
+
+					&:hover {
+						background-color: $primary-color;
+						color: #fff;
+						letter-spacing: 1px;
+					}
+				}
+
+			}
+
+			.search {
+				margin-bottom: 20px;
+				
+				form {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					max-width: 800px;
+					min-width: 350px;
+					width: 90%;
+					
+					input {
+						background: #f5f5f5;
+						border-radius:  4px 0 0 4px;
+						padding: 10px 15px;
+						font-size: 1rem;
+						border-radius: 4px;
+						flex: 1 300px 1;
+						width: 100%;
+					}
+
+					button {
+						padding: 10px ;
+						background-color: #e4e4e4;
+						font-weight: bold;
+						border-radius:  0 4px 4px 0;
+						color: $primary-color;
+						font-size: 1rem;
+
+						&:hover {
+							background-color: $button-hover-bg;
+							color: #ffffff;
+						}
+					}
+				}
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				border-spacing: 0;
+				margin-bottom: 1.5rem;
+
+				form button.delete{
+					color: red;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+
+				thead {
+					background-color: $table-header-bg;
+				}
+
+				th,
+				td {
+					padding: 10px;
+					border-bottom: 1px solid $table-border-color;
+					text-align: left;
+				}
+
+				th {
+					background-color: $table-header-bg;
+				}
+
+				tr:nth-child(even) {
+					background-color: $bg-color;
+				}
+
+			}
+
+			.pagination {
+				margin-top: 20px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				button {
+					padding: 8px 15px;
+					margin: 0 5px;
+					border: none;
+					border-radius: 4px;
+					font-size: 0.9rem;
+					cursor: pointer;
+					background-color: $secondary-color;
+
+					&:hover {
+						background-color: $accent-color;
+					}
+
+					&:disabled {
+						color: $secondary-color;
+						cursor: not-allowed;
+					}
+				}
+			}
 		}
-	}
-
-	footer {
-		background-color: $secondary-color;
-		color: white;
-		text-align: center;
-		padding: 1rem;
-		font-size: 0.9rem;
-		grid-column: 1/-1;
-
 	}
 
 	.wrapper {
