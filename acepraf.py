@@ -111,7 +111,7 @@ def tesouraria():
 
 @app.route('/registrar_contribuicao', methods=['GET', 'POST'])
 def registrar_contribuicao():
-    tipos_contribuicao_padrao = ['Água', 'Estradas', 'Manutenção']
+    tipos_contribuicao_padrao = ['Água', 'Estradas', 'Manutenção','Mensalidade da associação']
     if request.method == 'POST':
         terreno_id = request.form['terreno_id']
         valor = float(request.form['valor'])
