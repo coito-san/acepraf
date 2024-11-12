@@ -1,16 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from modelos import db, Terreno, Usuario, Diretoria,Tesouraria
+from modelos import db, Terreno, Usuario, Diretoria, Tesouraria
 from sqlalchemy.sql import func
 import logging
 from datetime import datetime
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///terrenos.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'supersecretkey'
 
 db.init_app(app)
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -48,7 +50,7 @@ def logout():
     logout_user()
     return redirect(url_for('terrenos'))
 
-@app.route('/admin',methods=['GET','POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin():
     page = request.args.get('page', 1, type=int)
@@ -73,15 +75,13 @@ def cadastro():
         return redirect(url_for('admin'))
     return render_template('cadastro.html')
 
-
 @app.route('/admin/atualiza_membro_diretoria', methods=['GET', 'POST'])
 def atualiza_membro_diretoria():
     if request.method == 'POST':
         cargo = request.form['cargo']
         cpf = request.form['cpf']
         nome_completo = request.form['nome_completo']
-        imagem = request.files['imagem'].read() if 'imagem' in request.files else None
-
+        imagem = request.files['imagem'].read() if 'imagem' in request.files else 'static/imagens_default/defaut sem perfil.jpg'
         membro = Diretoria.query.filter_by(cargo=cargo).first()
         if membro:
             membro.cpf = cpf  # Atualiza o CPF do membro da diretoria caso haja mudança
@@ -90,7 +90,7 @@ def atualiza_membro_diretoria():
                 membro.imagem = imagem
             else:
                 # Exclui a imagem antiga caso não haja nova imagem
-                membro.imagem = None
+                membro.imagem = 'static/imagens_default/defaut sem perfil.jpg'
         else:
             novo_membro = Diretoria(
                 cargo=cargo,
@@ -111,7 +111,7 @@ def tesouraria():
 
 @app.route('/registrar_contribuicao', methods=['GET', 'POST'])
 def registrar_contribuicao():
-    tipos_contribuicao_padrao = ['Água', 'Estradas', 'Manutenção','Mensalidade da associação']
+    tipos_contribuicao_padrao = ['Água', 'Estradas', 'Manutenção', 'Mensalidade da associação']
     if request.method == 'POST':
         terreno_id = request.form['terreno_id']
         valor = float(request.form['valor'])
@@ -132,8 +132,6 @@ def registrar_contribuicao():
 
     terrenos = Terreno.query.all()
     return render_template('registrar_contribuicao.html', terrenos=terrenos, tipos_contribuicao_padrao=tipos_contribuicao_padrao)
-
-
 
 @app.route('/visualizar_contribuicoes', methods=['GET', 'POST'])
 def visualizar_contribuicoes():
@@ -176,23 +174,10 @@ def listar_terrenos_para_deletar():
         terrenos = Terreno.query.order_by(Terreno.lote).all()
     return render_template('deletar_terrenos.html', terrenos=terrenos)
 
-@app.route('/admin/deletar_terreno/<int:id>', methods=['POST'])
-@login_required
-def deletar_terreno(id):
-    terreno = Terreno.query.get(id)
-    if terreno:
-        db.session.delete(terreno)
-        db.session.commit()
-        flash('Terreno excluído com sucesso!')
-    else:
-        flash('Terreno não encontrado.')
-    return redirect(url_for('listar_terrenos_para_deletar'))
-
 @app.route('/diretoria')
-def diretoria ():
+def diretoria():
     membro_diretoria = Diretoria.query.all()
     return render_template('diretoria.html')
-
 
 # Função para criar as tabelas
 def init_db():
