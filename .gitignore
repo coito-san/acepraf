@@ -9,6 +9,9 @@ instance/
 *.py[cod]
 *.sqlite3
 
+# Banco de dados
+terrenos.db
+
 # Log files
 *.log
 
