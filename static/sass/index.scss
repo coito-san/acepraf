@@ -143,6 +143,7 @@ body {
 		height: 100dvh;
 		position: sticky;
 		top: 0;
+		gap: 50px;
 
 		nav {
 			h3 {
@@ -276,7 +277,7 @@ body {
 			> form {
 				max-width: 800px;
 				width: 90%;
-				min-width: 800px;
+				min-width: 300px;
 				margin: 0 auto;
 				padding: 25px;
 				border-radius: 8px;

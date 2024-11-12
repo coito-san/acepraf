@@ -89,6 +89,7 @@ body aside {
   height: 100dvh;
   position: sticky;
   top: 0;
+  gap: 50px;
 }
 body aside nav h3 {
   margin-top: 0;
@@ -201,7 +202,7 @@ body main > section p {
 body main > section > form {
   max-width: 800px;
   width: 90%;
-  min-width: 800px;
+  min-width: 300px;
   margin: 0 auto;
   padding: 25px;
   border-radius: 8px;
